@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WELCOME TO THE CADRE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://unpkg.com/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <style>
+      .nav-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, transparent, #5b3bff, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+      .nav-underline:hover::after {
+  transform: scaleX(1);
+}
+
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .magnetic {
+        transition: transform 0.3s ease;
+      }
+      .magnetic:hover {
+        transform: scale(1.05);
+      }
+      #progressBarContainer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        z-index: 50;
+        background-color: transparent;
+      }
+      #progressBar {
+        height: 100%;
+        background-color: #5b3bff;
+        width: 0%;
+        transition: width 0.1s ease-out;
+      }
+      @keyframes gradientShift {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+
+  .animated-gradient {
+    background: radial-gradient(circle at 20% 30%, #5B3BFF, transparent 30%),
+                radial-gradient(circle at 80% 40%, #7767FF, transparent 30%),
+                radial-gradient(circle at 50% 70%, #9493FF, transparent 40%),
+                radial-gradient(circle at 30% 80%, #B4BFFA, transparent 50%),
+                radial-gradient(circle at 70% 90%, #D3E9FD, transparent 50%),
+                radial-gradient(circle at 50% 50%, #E2F5FE, transparent 60%);
+    background-size: 200% 200%;
+    background-repeat: no-repeat;
+    animation: gradientShift 15s ease infinite;
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+</style>
+  </head>
+  <body class="animated-gradient text-black">
+    <div id="progressBarContainer">
+      <div id="progressBar"></div>
+    </div>
+
+    <script>
+      AOS.init();
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.getElementById('progressBar').style.width = scrollPercent + '%';
+      });
+
+      window.addEventListener('load', () => {
+        const heroOrb = document.querySelectorAll('.parallax-hero');
+        const infiniteImg = document.querySelectorAll('.parallax-infinite');
+        if (heroOrb.length) new simpleParallax(heroOrb, { scale: 1.1, delay: 0.1 });
+        if (infiniteImg.length) new simpleParallax(infiniteImg, { scale: 1.2, delay: 0.1 });
+      });
+    </script>
+     <!-- 1.Hero Section -->
+    <section class="px-4 md:px-16 py-1 md:py-1" data-aos="fade-up">
+      <div class="max-w-screen-xl mx-auto bg-white rounded-2xl p-6 md:p-12 shadow-md">
+        <header class="w-full mb-6 flex justify-end items-center" data-aos="fade-down">
+  <div class="flex items-center gap-6">
+    <nav class="flex gap-8 text-sm font-semibold">
+      <a href="#our-approach" class="nav-underline">Why Cadrea</a>
+      <a href="#pricing" class="nav-underline">Pricing</a>
+    </nav>
+    <a href="cadrea-login.html" class="bg-[#5b3bff] text-white text-xs font-semibold rounded-full px-4 py-1 magnetic">LOGIN</a>
+  </div>
+</header>
+        <div class="grid md:grid-cols-2 gap-8 items-end">
+          <div class="relative flex flex-col gap-6" data-aos="fade-right">
+            <img src="assets/hero-orb-3d.png" class="parallax-hero" alt="3D Orb" class="w-[400px] h-[400px] rounded-2xl object-cover" />
+          </div>
+          <div class="flex flex-col items-end text-right gap-4" data-aos="fade-left">
+            <div class="flex gap-6 text-sm font-medium">
+              <div data-aos="fade-up" data-aos-delay="100">
+                <p class="text-xl font-bold text-[#5b3bff]">+30%</p>
+                <p class="uppercase text-xs">Marketing ROI</p>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="200">
+                <p class="text-xl font-bold text-[#5b3bff]">$200K</p>
+                <p class="uppercase text-xs">Annual Savings for<br />Enterprise Teams</p>
+              </div>
+              <div data-aos="fade-up" data-aos-delay="300">
+                <p class="text-xl font-bold text-[#5b3bff]">+50%</p>
+                <p class="uppercase text-xs">GTM Speed for<br />Product Teams</p>
+              </div>
+            </div>
+            <a href="mailto:info@joincadre.ai?subject=Interested%20in%20Connecting%20with%20Cadre&body=Hi%20Cadre%20Team%2C%0D%0A%0D%0AI%20came%20across%20your%20work%20and%20wanted%20to%20reach%20out.%20I'm%20exploring%20ways%20to%20%5Bbriefly%20state%20challenge%20or%20opportunity%20%E2%80%93%20e.g.%2C%20better%20understand%20our%20customers%2C%20launch%20a%20new%20product%2C%20level%20up%20our%20innovation%20strategy%5D%20and%20your%20approach%20really%20stood%20out.%0D%0A%0D%0AHere%E2%80%99s%20a%20bit%20of%20context%20about%20what%20we%E2%80%99re%20working%20on%3A%0D%0A%0D%0ACompany%2FTeam%3A%20%5BInsert%20brief%20description%5D%0D%0ACurrent%20Focus%3A%20%5BWhat%20you%E2%80%99re%20solving%20for%20or%20building%20toward%5D%0D%0AWhat%20We%E2%80%99re%20Looking%20For%3A%20%5Be.g.%2C%20a%20thought%20partner%2C%20research%20support%2C%20help%20shaping%20a%20go-to-market%20strategy%2C%20etc.%5D%0D%0A%0D%0AWould%20love%20to%20connect%20and%20hear%20how%20you%20might%20be%20able%20to%20support.%20Let%20me%20know%20if%20you'd%20be%20open%20to%20a%20short%20call%20sometime%20next%20week.%0D%0A%0D%0ALooking%20forward%20to%20connecting%2C%0D%0A%5BYour%20Name%5D%0D%0A%5BYour%20Role%5D%0D%0A%5BCompany%20Name%5D%0D%0A%5BContact%20Info%5D" class="text-[#5b3bff] font-semibold text-sm uppercase tracking-wide magnetic">Reach Out →</a>
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+              WELCOME TO<br /> THE <span class="text-[#5b3bff]">CADRE</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Discover the Platform -->
+    <section class="px-4 md:px-16 py-1 md:py-1" data-aos="fade-up">
+      <div class="max-w-screen-xl mx-auto bg-transparent rounded-2xl p-1">
+        <div class="grid md:grid-cols-2 gap-2 rounded-2xl">
+          <div class="flex flex-col bg-white rounded-2xl p-6 md:p-12 justify-between h-full gap-1" data-aos="fade-right">
+            <h2 class="text-2xl md:text-4xl font-bold mb-4">DISCOVER THE<br />PLATFORM</h2>
+            <img src="assets/discover-platform.png" alt="Orb Image" class="w-[350px] h-[350px] rounded-2xl object-cover" />
+          </div>
+          <div class="flex flex-col gap-2 h-full justify-between">
+            <div class="rounded-2xl bg-white p-4 flex justify-between items-start shadow-sm h-1/3 transition-colors duration-300 hover:bg-[#5b3bff] hover:text-white" data-aos="fade-left" data-aos-delay="100">
+              <h3 class="font-semibold text-base">Find who you’re missing. <br /> Reframe who you’ve misjudged.</h3>
+              <p class="text-xs text-right max-w-[16rem]">Whether your data comes from CRM, surveys, or support transcripts, we turn noise into patterns—and patterns into personas you can act on. <br/ >→</p>
+            </div>
+            <div class="rounded-2xl bg-white p-4 flex justify-between items-start shadow-sm h-1/3 transition-colors duration-300 hover:bg-[#5b3bff] hover:text-white" data-aos="fade-left" data-aos-delay="200">
+              <div>
+                <h3 class="font-semibold text-base">80+ live data signals.<br />One single source of strategic truth.</h3>
+              </div>
+              <p class="text-xs text-right max-w-[16rem]">With over 80 dynamic signals per segment, you get instant clarity on who your customers are, what they care about, why they convert, and when they’re ready to buy. <br/> →</p>
+            </div>
+            <div class="rounded-2xl bg-white p-4 flex justify-between items-start shadow-sm h-1/3 transition-colors duration-300 hover:bg-[#5b3bff] hover:text-white" data-aos="fade-left" data-aos-delay="300">
+              <h3 class="font-semibold text-base">Where bold ideas get tested. <br /> And the learnings happen fast.</h3>
+              <p class="text-xs text-right max-w-[16rem]">Run campaign simulations, validate product positioning, and launch segmented messaging—without waiting on research cycles or third-party tools. <br/ > →</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Infinite Design Section -->
+    <section class="px-4 md:px-16 py-1 md:py-1" data-aos="fade-up">
+      <div class="max-w-screen-xl mx-auto bg-black text-white rounded-2xl p-6 md:p-12 shadow-md">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+          <div class="md:w-1/2" data-aos="fade-right">
+            <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">
+              REPLACING<br/ >GUESSWORK<br/ >WITH  CLARITY<br/ >AND RESULTS
+            </h2>
+          </div>
+          <div class="md:w-1/2 text-right text-xs leading-relaxed" data-aos="fade-left">
+            <p>
+              MOST COMPANIES TREAT CUSTOMER UNDERSTANDING<BR/ > 
+              AS A ONE-TIME EXERCISE — A WORKSHOP, A RESEARCH <BR/ >
+              DECK, A CRM FILE BURIED IN A FOLDER NO ONE OPENS AGAIN. <BR/ >
+              BUT CUSTOMERS DON’T SIT STILL. THEY SHIFT, EVOLVE, <BR/ >
+              EXPECT MORE. AND BUSINESSES WHO FAIL TO KEEP UP?<BR/ >
+              THEY FALL BEHIND.
+            </p>
+          </div>
+        </div>
+        <div class="relative w-full mt-8 h-[300px]" data-aos="zoom-in">
+  <video 
+    class="absolute inset-0 w-full h-full object-cover rounded-2xl z-0"
+    autoplay 
+    muted 
+    loop 
+    playsinline
+  >
+    <source src="assets/AIatworkbackgroundvid.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>       
+<div class="relative w-full mt-8 h-[300px]" data-aos="zoom-in">
+  <video 
+    class="absolute inset-0 w-full h-full object-cover rounded-2xl z-0"
+    autoplay 
+    muted 
+    loop 
+    playsinline
+  >
+    <source src="assets/AIatworkbackgroundvid.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+ <div class="relative w-full mt-8 h-[300px]" data-aos="zoom-in">
+  <video 
+    class="absolute inset-0 w-full h-full object-cover rounded-2xl z-0"
+    autoplay 
+    muted 
+    loop 
+    playsinline
+  >
+    <source src="assets/AIatworkbackgroundvid.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>       
+<div class="relative w-full mt-8 h-[300px]" data-aos="zoom-in">
+  <video 
+    class="absolute inset-0 w-full h-full object-cover rounded-2xl z-0"
+    autoplay 
+    muted 
+    loop 
+    playsinline
+  >
+    <source src="assets/AIatworkbackgroundvid.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+      </div>
+    </section>
+
+    <!-- 4. Our Excellent Approach Section -->
+    <section id="our-approach" 
+    <section class="px-4 md:px-16 py-1 md:py-1" data-aos="fade-up">
+      <div class="max-w-screen-xl mx-auto bg-white rounded-2xl shadow-md p-6 md:p-12">
+        <div class="grid md:grid-cols-2">
+          <div class="text-sm md:text-base leading-relaxed" data-aos="fade-right">
+            <p>
+              We combine customer demographics, behavioral science, and data analytics to generate living insights that adapt in real time. This triad powers sharper segmentation, faster decisions, and strategic clarity you can trust—because it's built on what customers actually do, not what we assume.
+              <br/>
+              <br/> Together, these three forces create the foundation of Cadre’s  Insights Matrix —the engine behind results you can measure.
+            </p>
+          </div>
+          <div class="text-right" data-aos="fade-left">
+            <h2 class="text-2xl md:text-4xl font-bold">
+              OUR EXCELLENT <br /> APPROACH
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Card Row Section -->
+    <section id="pricing"
+    <section class="px-4 md:px-16 py-1 md:py-1" data-aos="fade-up">
+      <div class="max-w-screen-xl mx-auto bg-transparent rounded-2xl">
+        <div class="grid md:grid-cols-3 gap-4 bg-transparent p-1 rounded-2xl">
+          <div class="group bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center transition-colors duration-300 hover:bg-[#5b3bff] hover:text-white" data-aos="zoom-in" data-aos-delay="100">
+            <h3 class="text-xl font-semibold mb-2">TURN RAW DATA<br/ >INTO REAL INSIGHT</h3>
+            <img src="assets/icon-deep-discovery.png" alt="Deep Discovery Icon" class="w-20 h-20 mb-4" />
+    
+            <p class="text-sm leading-relaxed">
+              We begin by connecting your existing data streams—surveys, CRMs, transcripts, usage logs—into a usable intelligence layer. No rip-and-replace. Just structured integration that makes your data finally usable.
+            </p>
+          </div>
+          <div class="group bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center transition-colors duration-300 hover:bg-[#5b3bff] hover:text-white" data-aos="zoom-in" data-aos-delay="200">
+            <h3 class="text-xl font-semibold mb-2">MAKE SMARTER<br />DECISIONS</h3>
+            <img src="assets/icon-creative-ideation.png" alt="Creative Ideation Icon" class="w-20 h-20 mb-4" />
+            <p class="text-sm leading-relaxed">
+              Continuously updated segments based on live behavior, not static assumptions. These insights become living systems, not PDFs that build a history over time, highlighting how your customers change and evolve.
+            </p>
+          </div>
+          <div class="group bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center transition-colors duration-300 hover:bg-[#5b3bff] hover:text-white" data-aos="zoom-in" data-aos-delay="300">
+            <h3 class="text-xl font-semibold mb-2">IDEATR TO<br />STAY AHEAD</h3>
+            <img src="assets/icon-tailored-design.png" alt="Tailored Design Icon" class="w-20 h-20 mb-4" />
+            <p class="text-sm leading-relaxed">
+              Translate complex insight into brand-aligned, ready-to-use outputs. For marketers, PMs, CS, and strategy leads who need to move fast—and stay sharp.
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Reach Out Section -->
+     <section class="px-4 md:px-16 py-1 md:py-1" data-aos="fade-up">
+      <div class="max-w-screen-xl mx-auto bg-white rounded-2xl shadow-md p-6 md:p-12 pb-3 md:pb-6">
+        <div class="grid md:grid-cols-2 items-center">
+          <div data-aos="fade-right">
+            <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">
+              JOIN THE<br /><span class="text-[#5b3bff]">CADRE</span>
+            </h2>
+          </div>
+          <div class="text-right text-sm md:text-base leading-relaxed" data-aos="fade-left">
+            <p>
+              Cadre removes the guesswork, the rework, and the static <br/ >
+              thinking—so your team can build forward, not in circles.
+            </p>
+            <form class="mt-4 flex justify-end">
+              <input type="email" placeholder="Email" class="rounded-l-full px-4 py-2 border border-gray-300 w-64 focus:outline-none focus:ring-2 focus:ring-[#5b3bff]" />
+              <button type="submit" class="rounded-r-full px-4 py-2 bg-[#5b3bff] text-white font-semibold magnetic">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <div class="mt-8 flex justify-center" data-aos="zoom-in">
+          <img src="assets/reach-out-star.png" alt="Reach Out Star Icon" class="w-[1200px] h-[450px] rounded-2xl object-cover" />
+        </div>
+       <footer class="mt-10">
+          <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-semibold text-black">
+            <nav class="flex gap-8">
+              <a href="#">©Cadre 2025. All Rights Reserved.</a>
+            </nav>
+            <div class="flex flex-col md:items-end text-right">
+              <span>info@joincadre.ai</span>
+              <span>New York | Austin</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </body>
+</html>
